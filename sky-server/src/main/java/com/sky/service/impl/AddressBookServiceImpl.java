@@ -16,6 +16,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class AddressBookServiceImpl implements AddressBookService {
+    //todo 把地址信息放在redis中
 
     @Autowired
     private AddressBookMapper addressBookMapper;
