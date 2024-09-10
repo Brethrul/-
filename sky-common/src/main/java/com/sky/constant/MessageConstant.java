@@ -24,6 +24,9 @@ public class MessageConstant {
     public static final String ORDER_STATUS_ERROR = "订单状态错误";
     public static final String ORDER_NOT_FOUND = "订单不存在";
 
+    public static final String DELETE_DEFAULT_ADDRESS = "默认地址无法被删除";
+    public static final String TOO_MUCH_ADDRESS = "保存的地址数达到上限，请修改或删除旧地址";
+
     public static final String ALREADY_EXIST = "已经存在";
 
 
