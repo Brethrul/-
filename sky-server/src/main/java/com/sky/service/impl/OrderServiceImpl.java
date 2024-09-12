@@ -328,6 +328,21 @@ public class OrderServiceImpl implements OrderService {
         orderMapper.update(orders);
     }
 
+    @Override
+    public void reminder(Long id) {
+        Orders order = orderMapper.getById(id);
+        if(order == null || order.getStatus() >= 5 ){
+            throw new OrderBusinessException(MessageConstant.ORDER_STATUS_ERROR);
+        }
+        HashMap<Object, Object> map = new HashMap<>();
+        map.put("type", 2);//1来单提醒 2客户催单
+        map.put("orderId", order.getId());
+        map.put("content", "订单号：" + order.getNumber());
+        String jsonString = JSON.toJSONString(map);
+
+        webSocketServer.sendToAllClient(jsonString);
+    }
+
     private PageResult getPageResult(OrdersPageQueryDTO ordersPageQueryDTO) {
         Page<Orders> page = orderMapper.pageQuery(ordersPageQueryDTO);
 
