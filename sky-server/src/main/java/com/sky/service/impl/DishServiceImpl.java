@@ -135,7 +135,6 @@ public class DishServiceImpl implements DishService {
      */
     @Override
     public List<DishVO> listWithFlavor(Dish dish) {
-        //TODO 看看这里对不对
         List<Dish> dishList = dishMapper.getByCategoryId(dish.getCategoryId());
 
         List<DishVO> dishVOList = new ArrayList<>();

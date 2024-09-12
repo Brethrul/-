@@ -10,6 +10,7 @@ import com.sky.service.OrderService;
 import com.sky.vo.OrderPaymentVO;
 import com.sky.vo.OrderSubmitVO;
 import com.sky.vo.OrderVO;
+import com.sky.webSocket.WebSocketServer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,7 @@ import java.util.List;
 public class OrderController {
     @Autowired
     private OrderService orderService;
+
     @PostMapping("/submit")
     @ApiOperation("用户下单")
     public Result<OrderSubmitVO> submit(@RequestBody OrdersSubmitDTO ordersSubmitDTO){
@@ -47,6 +49,7 @@ public class OrderController {
 
         //模拟交易成功
         orderService.paySuccess(ordersPaymentDTO.getOrderNumber());
+
         log.info("模拟交易成功：{}", ordersPaymentDTO.getOrderNumber());
         return Result.success(orderPaymentVO);
     }
