@@ -34,7 +34,7 @@ public interface CategoryService {
      * @param type
      * @return
      */
-    public List<Category> listQuery(Integer type);
+    List<Category> listQuery(Integer type);
 
     /**
      * 删除分类
